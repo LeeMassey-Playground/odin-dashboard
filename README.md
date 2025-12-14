@@ -7,6 +7,6 @@ This goal of this project is to use HTML/CSS (using mostly CSS Grid) to create t
 
 Mock-up:
 
-[!Mock-up PNG Image](images/dashboard-project.png)
+![Mock-up PNG Image](images/dashboard-project.png)
 
 # Live Link: [tbd]
