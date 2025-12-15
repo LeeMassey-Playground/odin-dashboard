@@ -6,8 +6,9 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     display: grid;
-    grid-template-columns: max(200px, 20%) 2fr;
+    grid-template-columns: max(330px, 20%) 1fr;
     min-height: 100vh;
+    background-color: #e2ebf8;
 }
 
 h1,
@@ -32,8 +33,54 @@ aside ul {
     color: white;
 }
 
+.dashboard-menu-header {
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    padding: 30px;
+}
+
+.dashboard-menu-icon {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.rect-sm,
+.rect-lg {
+    width: 20px;
+    background-color: white;
+}
+
+.rect-sm {
+    height: 15px;
+}
+
+.rect-lg {
+    height: 25px;
+}
+
+.rect-1 {
+    grid-row: 1 / 3;
+}
+
+.rect-2 {
+    grid-row: 1 / 2;
+}
+
+.rect-3 {
+    grid-row: 3 / 4;
+}
+
+.rect-4 {
+    grid-row: 2 / 4;
+}
+
+
 .left-sidebar h1 {
-    padding: 24px;
+    margin-left: 30px;
 }
 
 .left-sidebar li {
@@ -50,6 +97,7 @@ aside ul {
     grid-template-columns: 3fr 2fr;
     grid-template-rows: 1fr 1fr;
     padding: 20px 40px;
+    background-color: white;
 }
 
 .search-container,
@@ -71,11 +119,12 @@ aside ul {
 }
 
 .search-text {
-    width: 75%;
-    height: 1.75rem;
+    width: 80%;
+    height: 2rem;
     border-radius: 10px;
-    border: none;
+    border: 1px solid lightgray;
     background-color: #e2ebf8;
+    margin-left: 8px;
 }
 
 .notifications {
@@ -98,8 +147,14 @@ aside ul {
     aspect-ratio: 1 / 1;
 }
 
+.greeting {
+    padding-left: 10px;
+}
+
 .action-bar {
     display: flex;
+    flex-flow: row nowrap;
+    min-width: 430px;
     justify-content: center;
     align-items: center;
 }
@@ -118,8 +173,8 @@ aside ul {
 .content {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    background-color: #e2ebf8;
     padding-top: 20px;
+    min-width: 720px;
 }
 
 .section-title {
@@ -138,7 +193,7 @@ aside ul {
     grid-template-rows: auto 1fr;
     min-height: 200px;
     max-height: 350px;
-    over-flow: auto;
+    overflow: auto;
     border-left: 8px solid #ffd000;
     border-radius: 12px;
     background-color: white;
@@ -155,4 +210,5 @@ aside ul {
     border: none;
     background: none;
     cursor: pointer;
+    margin-left: 12px;
 }
