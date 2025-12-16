@@ -1,3 +1,7 @@
+:root {
+    --shadow: 2px 4px 6px rgba(122, 122, 122, 0.35);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -20,6 +24,29 @@ h6,
 p {
     margin: 0;
     padding: 0;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li,
+button {
+    cursor: pointer;
+}
+
+li:hover,
+button:hover,
+a:hover {
+    translate: 0 -1px;
+    transform: scale(1.03);
+    filter: brightness(110%);
 }
 
 aside ul {
@@ -84,12 +111,22 @@ aside ul {
 }
 
 .left-sidebar li {
-    font-size: 1.35rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.45rem;
     padding: 12px;
+    align-items: center;
 }
 
 .nav-division {
     height: 50px;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    fill: white;
 }
 
 .topbar {
@@ -114,7 +151,7 @@ aside ul {
 }
 
 .search-svg {
-    width: 30px;
+    width: 25px;
     aspect-ratio: 1 /1;
 }
 
@@ -124,17 +161,19 @@ aside ul {
     border-radius: 10px;
     border: 1px solid lightgray;
     background-color: #e2ebf8;
-    margin-left: 8px;
+    margin-left: 12px;
 }
 
 .notifications {
     display: flex;
-    justify-content: end;
+    justify-content: center;
 }
 
 .notification-avatar {
     width: 40px;
     aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    background-color: #ffd000;
 }
 
 .greeting-container {
@@ -145,10 +184,12 @@ aside ul {
 .main-avatar {
     width: 75px;
     aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    background-color: #ffd000;
 }
 
 .greeting {
-    padding-left: 10px;
+    margin-left: 15px;
 }
 
 .action-bar {
@@ -160,7 +201,6 @@ aside ul {
 }
 
 .action-buttons>button {
-    border: none;
     background-color: #2f91ee;
     border-radius: 30px;
     color: white;
@@ -173,32 +213,37 @@ aside ul {
 .content {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    padding-top: 20px;
     min-width: 720px;
 }
 
 .section-title {
     grid-column: 1 / -1;
-    margin-left: 12px
+    margin: 30px 0 12px 25px;
 }
 
 .projects {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 12px;
+    place-content: start;
 }
 
 .project-card {
     display: grid;
     grid-template-rows: auto 1fr;
-    min-height: 200px;
-    max-height: 350px;
+    min-width: 380px;
+    min-height: 250px;
+    max-height: 400px;
     overflow: auto;
-    border-left: 8px solid #ffd000;
+    border-left: 10px solid #ffd000;
     border-radius: 12px;
     background-color: white;
-    margin: 12px;
-    padding: 25px 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding: 40px 50px 25px 30px;
+}
+
+.project-card p {
+    margin-bottom: 10px;
 }
 
 .article-actions {
@@ -209,6 +254,86 @@ aside ul {
 .article-action-button {
     border: none;
     background: none;
-    cursor: pointer;
     margin-left: 12px;
+}
+
+.right-sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-content: start;
+}
+
+.announcement-card {
+    width: 380px;
+    border-radius: 12px;
+    background-color: white;
+    margin-left: 20px;
+    padding: 30px 45px;
+}
+
+.announcement {
+    padding: 0 8px;
+}
+
+.announcement p {
+    font-size: .9rem;
+}
+
+.announcement-card hr {
+    border: 1px solid lightgray;
+    margin: 15px 0;
+}
+
+.trending-card {
+    width: 380px;
+    border-radius: 12px;
+    background-color: white;
+    margin-left: 20px;
+    padding: 8px 45px;
+}
+
+.trending {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    margin: 30px 0;
+}
+
+.trending-img {
+    background: #ffd000;
+    color: white;
+    border-radius: 100%;
+    padding: 10px;
+}
+
+.trending-content {
+    margin-left: 12px;
+}
+
+.project-card>h3,
+.announcement>h4 {
+    margin-bottom: 10px;
+}
+
+.trending-content>h4 {
+    margin-bottom: 4px;
+}
+
+.topbar,
+.project-card,
+.announcement-card,
+.trending-card,
+.action-bar button {
+    box-shadow: var(--shadow);
+}
+
+@media only screen and (max-width: 1200px) {
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .right-sidebar {
+        display: flex;
+        justify-content: space-around;
+    }
 }
