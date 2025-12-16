@@ -242,6 +242,7 @@ aside ul {
     display: flex;
     flex-direction: column;
     min-height: 278px;
+    min-width: 280px;
     overflow: auto;
     border-left: 10px solid #ffd000;
     border-radius: 12px;
@@ -272,7 +273,7 @@ aside ul {
     display: flex;
     flex-direction: column;
     gap: 28px;
-    width: 80%;
+    width: min(100%, 340px);
     align-content: start;
 }
 
@@ -372,7 +373,7 @@ aside ul {
     }
 
     .right-sidebar {
-        width: 100%;
+        width: min(100%, 290px);
     }
 }
 
@@ -394,7 +395,7 @@ aside ul {
     .right-sidebar {
         flex-direction: row;
         justify-content: space-around;
-        width: 100%;
+        width: max(100%, 260px);
     }
 
     .announcement-container,
@@ -410,6 +411,10 @@ aside ul {
 
     .left-sidebar {
         padding: 8px;
+    }
+
+    .dashboard-menu-header {
+        display: none;
     }
 
     .nav-text {
