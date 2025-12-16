@@ -332,6 +332,19 @@ aside ul {
     margin-bottom: 4px;
 }
 
+.footer {
+    padding: 25px;
+    text-align: center;
+    color: #2385e0;
+    font-size: 1.15rem;
+}
+
+.footer a {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .topbar,
 .project-card,
 .announcement-card,
