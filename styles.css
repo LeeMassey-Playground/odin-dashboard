@@ -147,6 +147,7 @@ aside ul {
 
 .topbar-section {
     display: flex;
+    gap: 14px;
     justify-content: space-between;
     align-items: center;
     width: 93%;
