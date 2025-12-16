@@ -10,7 +10,7 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     display: grid;
-    grid-template-columns: max(330px, 20%) 1fr;
+    grid-template-columns: clamp(320px, 22vw, 380px) 1fr;
     min-height: 100vh;
     background-color: #e2ebf8;
 }
@@ -36,24 +36,33 @@ a {
     color: inherit;
 }
 
-li,
 button {
     cursor: pointer;
 }
 
-li:hover,
 button:hover,
 a:hover {
-    translate: 0 -1px;
-    transform: scale(1.03);
+    transform: translateY(-1px) scale(1.03);
     filter: brightness(110%);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid #ffd000;
+    outline-offset: 3px;
 }
 
 aside ul {
     list-style-type: none;
+    padding: 0;
+    margin-left: 24px;
 }
 
 .left-sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
     background-color: #2f91ee;
     padding: 20px;
     font-weight: bold;
@@ -71,8 +80,6 @@ aside ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5px;
-    width: fit-content;
-    height: fit-content;
 }
 
 .rect-sm,
@@ -111,12 +118,7 @@ aside ul {
 }
 
 .left-sidebar li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.45rem;
     padding: 12px;
-    align-items: center;
 }
 
 .nav-division {
@@ -129,43 +131,56 @@ aside ul {
     fill: white;
 }
 
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .topbar {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    grid-template-rows: 1fr 1fr;
-    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
     background-color: white;
+    padding: 20px 30px;
+}
+
+.topbar-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 93%;
 }
 
 .search-container,
 .notifications,
-.greeting-container {
+.greeting-container,
+.action-bar {
     display: flex;
+    gap: 18px;
     align-items: center;
 }
 
-.search-container,
-.greeting-container,
-.notifications>* {
-    margin: 10px;
+.search-container {
+    width: 70%;
+    max-width: 680px;
+    padding: 12px;
 }
 
 .search-svg {
     width: 25px;
-    aspect-ratio: 1 /1;
+    aspect-ratio: 1 / 1;
 }
 
-.search-text {
-    width: 80%;
+.search-bar {
+    width: 100%;
     height: 2rem;
     border-radius: 10px;
     border: 1px solid lightgray;
     background-color: #e2ebf8;
-    margin-left: 12px;
 }
 
 .notifications {
-    display: flex;
     justify-content: center;
 }
 
@@ -176,11 +191,6 @@ aside ul {
     background-color: #ffd000;
 }
 
-.greeting-container {
-    display: grid;
-    grid-template-columns: 75px 1fr;
-}
-
 .main-avatar {
     width: 75px;
     aspect-ratio: 1 / 1;
@@ -189,90 +199,103 @@ aside ul {
 }
 
 .greeting {
-    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .action-bar {
-    display: flex;
-    flex-flow: row nowrap;
-    min-width: 430px;
-    justify-content: center;
-    align-items: center;
+    flex-flow: nowrap;
 }
 
-.action-buttons>button {
+.action-bar>button {
     background-color: #2f91ee;
     border-radius: 30px;
     color: white;
     font-weight: bold;
     font-size: 1.15rem;
-    padding: 10px 30px;
-    margin-left: 24px;
+    padding: 12px 34px;
 }
 
 .content {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    min-width: 720px;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
 }
 
 .section-title {
     grid-column: 1 / -1;
-    margin: 30px 0 12px 25px;
+    margin-left: 8px;
 }
 
 .projects {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-content: start;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    align-content: start;
 }
 
 .project-card {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    min-width: 380px;
-    min-height: 250px;
-    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    min-height: 278px;
     overflow: auto;
     border-left: 10px solid #ffd000;
     border-radius: 12px;
     background-color: white;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    padding: 40px 50px 25px 30px;
+    padding: 26px 28px;
 }
 
 .project-card p {
     margin-bottom: 10px;
+    font-size: 1.1rem;
+    line-height: 1.75rem;
+    color: #505050;
 }
 
 .article-actions {
     display: flex;
+    margin-top: auto;
+    gap: 14px;
     justify-content: end;
 }
 
 .article-action-button {
     border: none;
     background: none;
-    margin-left: 12px;
 }
 
 .right-sidebar {
-    display: grid;
-    grid-template-columns: 1fr;
-    place-content: start;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 80%;
+    align-content: start;
 }
 
-.announcement-card {
-    width: 380px;
+.announcement-container,
+.trending-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    align-content: start;
+}
+
+.announcement-card,
+.trending-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
     border-radius: 12px;
     background-color: white;
-    margin-left: 20px;
-    padding: 30px 45px;
+    padding: 40px;
 }
 
 .announcement {
-    padding: 0 8px;
+    padding: 0 16px;
 }
 
 .announcement p {
@@ -284,18 +307,9 @@ aside ul {
     margin: 15px 0;
 }
 
-.trending-card {
-    width: 380px;
-    border-radius: 12px;
-    background-color: white;
-    margin-left: 20px;
-    padding: 8px 45px;
-}
-
 .trending {
     display: grid;
     grid-template-columns: 50px 1fr;
-    margin: 30px 0;
 }
 
 .trending-img {
@@ -326,14 +340,65 @@ aside ul {
     box-shadow: var(--shadow);
 }
 
-@media only screen and (max-width: 1200px) {
-    .content {
-        display: flex;
-        flex-direction: column;
+@media only screen and (max-width: 1280px) {
+
+
+    .topbar-section {
+        width: 100%;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card,
+    .announcement-card,
+    .trending-card {
+        padding: 18px;
     }
 
     .right-sidebar {
-        display: flex;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .project-card,
+    .announcement-card,
+    .trending-card {
+        padding: 12px;
+    }
+
+    .right-sidebar {
+        flex-direction: row;
         justify-content: space-around;
+        width: 100%;
+    }
+
+    .announcement-container,
+    .trending-container {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    body {
+        grid-template-columns: 110px 1fr;
+    }
+
+    .left-sidebar {
+        padding: 8px;
+    }
+
+    .nav-text {
+        display: none;
     }
 }
